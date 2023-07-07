@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap");
+h2 {
+  margin: 20px;
+}
+input {
+  margin: 25px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #dde6ed;
+  font-size: 15px;
+}
+.loginBox {
+  color: #ffffff;
+  background-color: #40128b;
+  /* height: 40vw;
+    width: 25vw; */
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  left: 550px;
+  top: 70px;
+  box-shadow: 10px 10px 10px #40128b;
+  backdrop-filter: blur(10px);
+  border: 2px solid transparent;
+  padding: 30px;
+  font-family: "Mate SC", serif;
+}
+
+body {
+  background-color: #8696fe;
+}
+.OTP {
+  margin-top: 90px;
+}
+a:hover {
+  color: red;
+}
+.ps-menu-button:hover {
+  background-color: #dd58d6 !important;
+}
+
+a,
+.css-dip3t8 {
+  background-color: #40128b !important;
+  text-align: center;
+  font-size: 25px;
+  font-family: "Source Code Pro", monospace;
+  color: #ffffff;
+}
+
+.Chat {
+  position: relative;
+  left: 450px;
+  top: 100px;
+  background-color: #c9eeff;
+  height: 600px;
+  width: 500px;
+  text-align: center;
+  border-radius: 20px;
+  overflow: auto;
+}
+
+.Scrolling-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.Room {
+  position: relative;
+  left: 500px;
+  top: 150px;
+  background-color: #52e8f0;
+  border-radius: 10px;
+  height: 300px;
+  width: 500px;
+  text-align: center;
+  color: #3a1d8f;
+  font-family: "Mate SC", serif;
+}
+.roomInside {
+  position: relative;
+  top: 60px;
+}
+.chatLink {
+  text-decoration: none !important;
+  background-color: transparent !important;
+  color: white !important;
+}
+.myMessages{
+  flex-grow: 1; /* Allow the scrollable content to expand and fill the remaining space */
+  overflow-y: auto; /* Enable vertical scrolling for the scrollable content */
+  padding: 20px;
+}
