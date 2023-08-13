@@ -1,7 +1,9 @@
 import React from "react";
 import firebase from "../firebase";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../components/css/login.css";
 
 class Login extends React.Component {
   handleChange = (e) => {
@@ -57,28 +59,29 @@ class Login extends React.Component {
         // User signed in successfully.
         const user = result.user;
         console.log(JSON.stringify(user));
-        alert("User is verified");
+
         // ...
         // this.props.setVerify(true);
-        localStorage.setItem("isVerified", JSON.stringify(true));
+
         localStorage.setItem("myItem", JSON.stringify(this.state.mobile));
-        this.props.navigate("/left");
-        console.log(localStorage.getItem("isVerified"));
+        this.props.navigate("/room");
+
         console.log(localStorage.getItem("myItem"));
       })
       .catch((error) => {
         // User couldn't sign in (bad verification code?)
         // ...
+        toast.error("Enter correct OTP!");
       });
   };
 
   render() {
     return (
-      <body className="loginBox w-25 h-50">
-        <div className="main row">
-          <h2>Verify With your Phone Number</h2>
+      <div className="loginBox">
+        <form onSubmit={this.onSignInSubmit}>
+          <div className="main">
+            <h2>Verify With your Phone Number</h2>
 
-          <form onSubmit={this.onSignInSubmit}>
             <div id="sign-in-button"></div>
             <input
               type="tel"
@@ -91,15 +94,14 @@ class Login extends React.Component {
             <button type="submit" className="m-2 p-2 btn btn-outline-info">
               Send OTP
             </button>
-          </form>
-        </div>
-        <div className="row">
-          <form onSubmit={this.onSubmitOTP} className="OTP">
-            <h4>Enter your otp</h4>
+          </div>
+        </form>
+        <form onSubmit={this.onSubmitOTP}>
+          <div className="main2">
+            <h3>Enter your otp</h3>
             <input
               type="text"
               maxlength="6"
-              // onkeyup="clickEvent(this,'sec')"
               onChange={this.handleChange}
               name="otp"
               placeholder="Enter OTP"
@@ -108,22 +110,20 @@ class Login extends React.Component {
             <button type="submit" className="m-3 p-2  btn btn-outline-success">
               VERIFY
             </button>
-          </form>
-        </div>
-      </body>
+          </div>
+        </form>
+      </div>
     );
   }
 }
 
 export function LoginWithNavigation(props) {
   const navigate = useNavigate();
-  const [isVerify, setVerify] = useState(false);
+
   return (
-    <Login
-      navigate={navigate}
-      isVerify={isVerify}
-      setVerify={setVerify}
-    ></Login>
+    <>
+      <Login navigate={navigate}></Login>
+    </>
   );
 }
 

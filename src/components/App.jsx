@@ -1,27 +1,30 @@
 import React from "react";
 
-import Left from "./Left";
-import  { LoginWithNavigation } from "./Login";
+// import Left from "./Left";
+import Sidebar from "./Sidebar";
+import Private from "./Private";
+import { LoginWithNavigation } from "../pages/Login";
+import Home from "../pages/Home";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-import Logout from "./Logout";
-
-import  { RoomWithState } from "./Room";
-import { ChatWithState } from "./Chat";
+import Room from "../pages/Room";
+import Chat from "../pages/Chat";
 
 function App() {
   return (
-      <BrowserRouter>
-            <Left />
-            <Routes>
-            <Route path="/left" element={<Left  />} />
-            <Route path="/logout" element={<Logout/>}/>
-            <Route path="/login" element={<LoginWithNavigation />} />
-            <Route path="/room"  element={<RoomWithState/>}/>
-            <Route path="/chat"  element={<ChatWithState/>}/>
-            </Routes>
-      </BrowserRouter> 
+    <div className="App">
+      <Sidebar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginWithNavigation />} />
+        <Route element={<Private />}>
+          <Route path="/room" element={<Room />} />
+          <Route path="/chat" element={<Chat />} />
+        </Route>
+      </Routes>
+    </div>
   );
 }
 export default App;
